@@ -1,0 +1,10 @@
+milton:
+  filesystem_root: data
+  exclude_paths:
+    - /resources
+logging:
+  level:
+    root: info
+  file: hotpot-webdav.log
+server:
+  port: 8080
