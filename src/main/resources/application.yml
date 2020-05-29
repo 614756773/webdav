@@ -6,5 +6,3 @@ logging:
   level:
     root: info
   file: hotpot-webdav.log
-server:
-  port: 8080
