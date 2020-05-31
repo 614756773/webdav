@@ -13,6 +13,10 @@ public class MiltonProperties {
 
     private String filesystemRoot;
 
+    private String username;
+
+    private String password;
+
     public String getFilesystemRoot() {
         return filesystemRoot;
     }
@@ -29,4 +33,19 @@ public class MiltonProperties {
         this.excludePaths = excludePaths;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

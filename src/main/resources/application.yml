@@ -1,7 +1,9 @@
 milton:
   filesystem_root: data
+  username: admin
+  password: 123456
   exclude_paths:
-    - /resources
+    - /auth
 logging:
   level:
     root: info

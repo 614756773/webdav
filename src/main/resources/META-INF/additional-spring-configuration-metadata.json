@@ -11,6 +11,18 @@
       "name": "milton.exclude_paths",
       "type": "java.lang.String",
       "description": "特殊文件路径，当客户端访问次路径时，直接当做http请求处理."
+    },
+    {
+      "sourceType": "cn.hotpot.webdav.config.MiltonProperties",
+      "name": "milton.username",
+      "type": "java.lang.String",
+      "description": "用户名."
+    },
+    {
+      "sourceType": "cn.hotpot.webdav.config.MiltonProperties",
+      "name": "milton.password",
+      "type": "java.lang.String",
+      "description": "密码."
     }
   ]
 }

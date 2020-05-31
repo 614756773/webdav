@@ -9,6 +9,7 @@ import io.milton.http.annotated.AnnotationResourceFactory;
 import io.milton.http.template.JspViewResolver;
 import io.milton.http.template.ViewResolver;
 import io.milton.servlet.MiltonServlet;
+import org.apache.mina.util.ConcurrentHashSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * 其实使用 {@link io.milton.servlet.SpringMiltonFilter}是一个更好的选择
@@ -72,7 +73,15 @@ public class SpringMiltonFilterBean extends GenericFilterBean {
         }
 
         // 3.是http请求，访问的普通路径，走webdav协议
+        checkIP(request);
         doMiltonProcessing(request, (HttpServletResponse) response);
+    }
+
+    private void checkIP(HttpServletRequest request) {
+        String remoteAddr = request.getRemoteAddr();
+        if (!IpWhitelist.cache.contains(remoteAddr)) {
+            throw new RuntimeException("Have not logged in on this machine, prohibit access");
+        }
     }
 
     private void doMiltonProcessing(HttpServletRequest req, HttpServletResponse resp) throws IOException {
